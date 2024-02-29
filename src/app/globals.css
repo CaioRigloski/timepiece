@@ -42,9 +42,3 @@ a {
 .active {
   color: #A57D02;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
