@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import breitlingLogo from "../../../public/svg/BreitlingLogo.svg"
+import breitlingLogo from "../../../public/svg/breitlingLogo.svg"
 import patekLogo from "../../../public/svg/patek-philippe120.svg"
 import rolexLogo from "../../../public/svg/rolex120.svg"
 import Link from "next/link"

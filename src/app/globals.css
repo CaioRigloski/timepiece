@@ -6,6 +6,8 @@
   --menu-font-size: 0.938rem;
   --pallete-white-color: #FAFAFA;
   --pallete-brown-color: #805A40;
+  --pallete-gold-color: #A57D02;
+  --design-line-color: rgb(250, 250, 250, 0.2);
 }
 
 * {
@@ -40,5 +42,5 @@ a {
 
 /* Color for active menu item */
 .active {
-  color: #A57D02;
+  color: var(--pallete-gold-color);
 }

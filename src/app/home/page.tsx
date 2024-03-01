@@ -1,6 +1,8 @@
+'use client'
+
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
-import BreitlingLogo from "../../../public/svg/BreitlingLogo.svg"
+import BreitlingLogo from "../../../public/svg/breitlingLogo.svg"
 import BreitlingWatch from "../../../public/images/homeBreitling.png"
 import Link from "next/link";
 import Collection from "../components/Collection";
@@ -104,7 +106,7 @@ const CollectionBttn = styled.button`
 const Line = styled.span`
   width: 87.5rem;
   height: 1px;
-  background-color: rgb(250, 250, 250, 0.2);
+  background-color: var(--design-line-color);
   justify-self: center;
   grid-area: line;
 `

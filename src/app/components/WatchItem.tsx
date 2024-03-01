@@ -59,7 +59,7 @@ export default function WatchItem(props: {logo: string, imageSrc: string | Stati
   return (
     <Box>
       <WatchImage>
-        <Image src={props.imageSrc} objectFit="contain" fill={true} alt="Avenger II Watch"/>
+        <Image src={props.imageSrc} style={{objectFit:"contain"}} sizes="8.75rem, 12.438rem" fill alt="Avenger II Watch"/>
       </WatchImage>
       <Image src={src} sizes="5.188rem" alt={altText}/>
       <Name>{props.name}</Name>
