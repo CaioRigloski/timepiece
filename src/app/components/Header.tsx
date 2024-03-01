@@ -33,7 +33,7 @@ const Menu = styled.menu`
 export default function Header() {
   const pathname = usePathname()
 
-  function isActive(url: string, pathname: string) {
+  function isActive(url: string | null, pathname: string) {
     if(url === pathname) {
       return "active"
     } else {
