@@ -1,8 +1,9 @@
 import styled, { css, keyframes } from "styled-components"
 import { ReactNode, useEffect, useState } from "react"
+import { CustomAttrs } from "../types/customAttrs.type"
 
 
-const scrollLeft = (length: number) => keyframes`
+const scrollLeft = (length: number) => keyframes<CustomAttrs>`
   0% {
     transform: translateX(0);
   }  
@@ -10,7 +11,7 @@ const scrollLeft = (length: number) => keyframes`
     transform: translateX(calc(-27.438rem * ${length}));
   }
 `
-const scrollRight = (length: number) => keyframes`
+const scrollRight = (length: number) => keyframes<CustomAttrs>`
   0% {
     transform: translateX(calc(-27.438rem * ${length}));
   }  
@@ -25,12 +26,12 @@ const lightenSlider = keyframes`
   }
 `
 
-const SliderTrack = styled.div`
+const SliderTrack = styled.div<CustomAttrs>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: calc(27.438rem * ${props => props.length} * 2);
+  width: calc(27.438rem * ${props => props.$length} * 2);
   height: 13.125rem;
   gap: 5.438rem;
   &:before {
@@ -41,7 +42,7 @@ const SliderTrack = styled.div`
     width: 100%;
     height: 100%;
     animation:
-    ${props => props.selected ?
+    ${props => props.$selected ?
       css`${lightenSlider} 3s linear alternate;`
       :
       css`none`
@@ -49,7 +50,7 @@ const SliderTrack = styled.div`
   }
 `
 
-const Gradient = styled.div`
+const Gradient = styled.div<CustomAttrs>`
   position: relative;
   margin: auto;
   width: 100%;
@@ -73,11 +74,11 @@ const Gradient = styled.div`
   }
   &:nth-child(even) > div {
     background-color: #BBBCB6;
-    animation: ${props => scrollLeft(props.length)} 20s linear infinite;
+    animation: ${props => scrollLeft(props.$length)} 20s linear infinite;
   }
   &:nth-child(odd) > div {
     background-color: var(--pallete-white-color);
-    animation: ${props => scrollRight(props.length)} 20s linear infinite;
+    animation: ${props => scrollRight(props.$length)} 20s linear infinite;
   }
   & > div:hover {
     animation-play-state: paused;
@@ -99,8 +100,8 @@ export default function Slider(props: {children: ReactNode, length: number, id: 
   }, [props.isSelected])
 
   return (
-    <Gradient length={props.length}>
-      <SliderTrack length={props.length} id={props.id} selected={animationIsRunning}>
+    <Gradient $length={props.length}>
+      <SliderTrack $length={props.length} id={props.id} $selected={animationIsRunning}>
         {props.children}
       </SliderTrack>
     </Gradient>
