@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import Header from "../components/Header";
 import Image from "next/image";
 import BreitlingLogo from "../../../public/svg/BreitlingLogo.svg"
 import BreitlingWatch from "../../../public/images/homeBreitling.png"
@@ -114,7 +113,6 @@ export default function Home() {
   return (
     <>
       <section>
-        <Header/>
         <Main>
           <div>
             <Image src={BreitlingLogo} alt="Breitling Logo" width="408"/>
@@ -127,7 +125,7 @@ export default function Home() {
           </div>
           <div>
             <ImageWrap>
-              <Image src={BreitlingWatch} alt="Breitling Mulsanne Navitimer Watch" fill/>
+              <Image src={BreitlingWatch} alt="Breitling Mulsanne Navitimer Watch" sizes="31.878rem, 19.043rem" fill/>
             </ImageWrap>
             <WatchShadow/>
           </div>

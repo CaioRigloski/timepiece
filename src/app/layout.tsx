@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Goudy_Bookletter_1911 } from "next/font/google";
-import "./globals.css";
+import "../app/globals.css";
+import Layout from "./components/Layout";
 
 const goudy = Goudy_Bookletter_1911({ subsets: ["latin"], weight: "400" });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={goudy.className}>{children}</body>
+      <body className={goudy.className}>
+          <Layout/>
+          {children}
+      </body>
     </html>
-  );
+  )
 }
