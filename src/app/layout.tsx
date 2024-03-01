@@ -8,6 +8,9 @@ const goudy = Goudy_Bookletter_1911({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: "Timepiece",
   description: "Luxury watch store",
+  icons: {
+    icon: "/icon.png"
+  }
 };
 
 export default function RootLayout({
