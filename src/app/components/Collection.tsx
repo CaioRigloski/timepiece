@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import breitlingLogo from "../../../public/svg/BreitlingLogo.svg"
 import patekLogo from "../../../public/svg/patek-philippe120.svg"
 import rolexLogo from "../../../public/svg/rolex120.svg"
@@ -126,7 +126,7 @@ export default function Collection() {
   }
 
   return (
-    <CollectionSection name="collection">
+    <CollectionSection id="collection">
       <Logos>
         <Link href="#breitling-slider" onClick={(e) => setSelected(1)}>
           <Image src={breitlingLogo} alt="Breitling Logo" width={120}/>
