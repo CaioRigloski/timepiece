@@ -92,7 +92,6 @@ export default function Slider(props: {children: ReactNode, length: number, id: 
   useEffect(() => {
     if(props.isSelected) {
       setAnimationIsRunning(true)
-      console.log(props.isSelected)
       setTimeout(() => {
         setAnimationIsRunning(false)
       }, 3000)
