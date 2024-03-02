@@ -7,8 +7,11 @@ import aboutWatch from "../../../public/svg/aboutWatch.svg"
 const Main = styled.main`
   display: grid;
   grid-template-columns: auto max-content auto;
-  padding: 4.438rem 15.125rem 4.438rem 15.125rem;
+  padding: 3.625rem 15.125rem 3.625rem 15.125rem;
   align-items: center;
+  @media(max-width: 1440px) {
+    padding: 4.438rem 15.125rem 4.438rem 15.125rem;
+  }
 `
 const ImageWrap = styled.div`
   display: grid;
