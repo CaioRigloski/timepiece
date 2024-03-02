@@ -28,6 +28,9 @@ const Menu = styled.menu`
   > a {
     width: max-content;
   }
+  @media(max-width: 1440px) {
+    gap: 4.375rem;
+  }
 `
 
 export default function Header() {
