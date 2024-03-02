@@ -8,16 +8,7 @@ import Link from "next/link";
 import Collection from "../components/Collection";
 
 
-const lighten = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100%;
-  }
-`
-
-const Main = styled.main`
+const Section = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto auto;
@@ -35,12 +26,10 @@ const Main = styled.main`
   > div:nth-child(1) {
     grid-area: details;
     justify-self: flex-end;
-    animation: ${lighten} 2s linear;
   }
   > div:nth-child(2) {
     grid-area: watch;
     justify-self: flex-start;
-    animation: ${lighten} 2s linear;
   }
 `
 const WatchTitle = styled.h1`
@@ -114,8 +103,8 @@ const Line = styled.span`
 export default function Home() {
   return (
     <>
-      <section>
-        <Main>
+      <main>
+        <Section>
           <div>
             <Image src={BreitlingLogo} alt="Breitling Logo" width="408"/>
             <WatchTitle>BENTLEY MULSANNE NAVITIMER</WatchTitle>
@@ -137,8 +126,8 @@ export default function Home() {
               <CollectionBttn>VIEW COLLECTION</CollectionBttn>
             </Link>
           </CollectionBttnWrapper>
-        </Main>
-      </section>
+        </Section>
+      </main>
       <Collection/>
     </>
   )
