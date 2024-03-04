@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import styled from "styled-components"
+import { device } from "../styles/breakpoints"
 
 const HeaderContainer = styled.header`
   display: grid;
@@ -28,7 +29,7 @@ const Menu = styled.menu`
   > a {
     width: max-content;
   }
-  @media(max-width: 1440px) {
+  @media ${device.xl} {
     gap: 4.375rem;
   }
 `

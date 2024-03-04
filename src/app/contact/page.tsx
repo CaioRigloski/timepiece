@@ -1,6 +1,7 @@
 'use client'
 
 import styled from "styled-components"
+import { device } from "../styles/breakpoints"
 
 const Main = styled.main`
   display: flex;
@@ -9,7 +10,7 @@ const Main = styled.main`
   color: white;
   gap: 2.438rem;
   align-items: center;
-  @media(max-width: 1440px) {
+  @media ${device.xl} {
     padding-top: 10.813rem;
   }
 `

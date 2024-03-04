@@ -3,13 +3,14 @@
 import Image from "next/image"
 import styled from "styled-components"
 import aboutWatch from "../../../public/svg/aboutWatch.svg"
+import { device } from "../styles/breakpoints"
 
 const Main = styled.main`
   display: grid;
   grid-template-columns: auto max-content auto;
   padding: 3.625rem 15.125rem 3.625rem 15.125rem;
   align-items: center;
-  @media(max-width: 1440px) {
+  @media ${device.xl} {
     padding: 4.438rem 15.125rem 4.438rem 15.125rem;
   }
 `
@@ -81,7 +82,7 @@ const Footer = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  @media (max-width: 1440px) {
+  @media ${device.xl} {
     height: 5.688rem;
   }
 `

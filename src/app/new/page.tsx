@@ -6,6 +6,7 @@ import breitlingLogo from "../../../public/svg/breitlingLogo.svg"
 import breitlingChronograph from "../../../public/images/breitlingChronomat.png"
 import rolexLogo from "../../../public/svg/rolex120.svg"
 import rolexDatejust from "../../../public/images/rolexDatejust.png"
+import { device } from "../styles/breakpoints"
 
 const Main = styled.main`
   display: grid;
@@ -13,7 +14,7 @@ const Main = styled.main`
   padding-top: 3.625rem;
   align-items: center;
   justify-content: center;
-  @media(max-width: 1440px) {
+  @media ${device.xl} {
     padding-top: 6.625rem;
   }
 `

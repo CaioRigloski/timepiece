@@ -19,6 +19,7 @@ import datejust from "../../../public/images/rolexDatejust.png"
 import WatchItem from "./WatchItem"
 import Slider from "./Slider"
 import WatchList from "../interfaces/watchList.interface"
+import { device } from "../styles/breakpoints"
 
 
 const CollectionSection = styled.section`
@@ -38,7 +39,7 @@ const Display = styled.div`
   display: grid;
   padding: 0 1.25rem 0 1.25rem;
   justify-items: center;
-  @media (max-width: 1440px) {
+  @media ${device.xl} {
     position: relative;
     top: 4rem;
   }
