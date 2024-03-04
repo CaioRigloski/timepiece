@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Goudy_Bookletter_1911 } from "next/font/google";
 import "../app/styles/globals.css";
 import Layout from "./components/Layout";
@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     icon: "/icon.png"
   }
 };
+
+export const viewport: Viewport = {
+  themeColor: '#060D0D',
+}
 
 export default function RootLayout({
   children,

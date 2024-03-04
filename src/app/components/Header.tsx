@@ -13,6 +13,11 @@ const HeaderContainer = styled.header`
   font-size: var(--menu-font-size);
   color: var(--pallete-white-color);
   text-align: center;
+  @media ${device.sm}{
+    grid-template-columns: 1fr;
+    grid-tempalte rows: 1fr;
+    height: max-content;
+  }
 `
 
 const Title = styled.h1`
@@ -20,6 +25,12 @@ const Title = styled.h1`
   letter-spacing: var(--title-letter-spacing);
   justify-self: flex-start;
   margin-left: 12.5rem;
+  @media ${device.sm}{
+    justify-self: center;
+    margin-left: 0;
+    padding-top: 2.855rem;
+    padding-bottom: 2.855rem;
+  }
 `
 
 const Menu = styled.menu`
@@ -31,6 +42,42 @@ const Menu = styled.menu`
   }
   @media ${device.xl} {
     gap: 4.375rem;
+  }
+  @media ${device.sm}{
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 1.5rem;
+    margin-right: 0;
+    font-size: 0;
+    justify-self: end;
+    align-items: end;
+    position: relative;
+    right: 1rem;
+    > a {
+      width: 1.5rem;
+      height: 0.2rem;
+      border-radius: 2px;
+      background-color: var(--pallete-white-color);
+      pointer-events: none;
+      content-visibility: hidden;
+      transition: 0.5s;
+    }
+    &:hover {
+      margin-right: 0;
+      gap: 0.5rem;
+      font-size: inherit;
+      width: 100%;
+      height: 100%;
+      > a {
+        transition: 0.5s;
+        border-radius: 0;
+        background-color: unset;
+        width: fit-content;
+        height: fit-content;
+        pointer-events: auto;
+        content-visibility: visible;
+      }
+    }
   }
 `
 
