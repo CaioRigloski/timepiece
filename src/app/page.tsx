@@ -6,9 +6,10 @@ import BreitlingLogo from "../../public/svg/breitlingLogo.svg"
 import BreitlingWatch from "../../public/images/homeBreitling.png"
 import Link from "next/link";
 import Collection from "./components/Collection";
+import { device } from "./styles/breakpoints";
 
 
-const Section = styled.main`
+const Section = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto auto;
@@ -26,10 +27,33 @@ const Section = styled.main`
   > div:nth-child(1) {
     grid-area: details;
     justify-self: flex-end;
+    @media ${device.sm} {
+      justify-self: center;
+      align-self: start;
+    }
+    > a {
+      padding-top: 0.938rem;
+    }
   }
   > div:nth-child(2) {
     grid-area: watch;
     justify-self: flex-start;
+    @media ${device.sm} {
+      justify-self: center;
+      align-self: end;
+    }
+  }
+  @media ${device.sm} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 15rem 15rem 1rem 5rem;
+    grid-template-areas:
+      "watch"
+      "details"
+      "line"
+      "collection"
+    ;
+    align-items: center;
+    height: fit-content;
   }
 `
 const WatchTitle = styled.h1`
@@ -38,11 +62,13 @@ const WatchTitle = styled.h1`
   font-size: var(--title-font-size);
   color: white;
   letter-spacing: var(--title-letter-spacing);
+  @media ${device.sm} {
+    font-size: 0.8rem;
+    bottom: 0;
+  }
 `
 
 const OrderBttn = styled.button`
-  position: relative;
-  top: 1rem;
   width: 9.313rem;
   height: 1.793rem;
   background-color: #FAFAFA0d;
@@ -60,6 +86,10 @@ const ImageWrap = styled.div`
   width: 31.878rem;
   height: 19.043rem;
   transform: rotate(52deg);
+  @media ${device.sm} {
+    width: 20rem;
+    height: 10rem;
+  }
 `
 
 const WatchShadow = styled.div`
@@ -68,17 +98,23 @@ const WatchShadow = styled.div`
   background-color: #000;
   border-radius: 50%;
   filter: blur(20px);
+  @media ${device.sm} {
+    display: none;
+  }
 `
 
 const CollectionBttnWrapper = styled.div`
   height: 6.688rem;
   grid-area: collection;
-  justify-content: flex-end!important;
+  justify-content: center
+  @media ${device.sm} {
+    justify-content: start
+    height: fit-content;
+  }
+  
 `
 
 const CollectionBttn = styled.button`
-  position: relative;
-  bottom: 0.938rem;
   width: 16.563rem;
   height: 3.188rem;
   border: 1px solid #A57D02;
@@ -90,6 +126,9 @@ const CollectionBttn = styled.button`
     transform: scale(98%);
   }
   transition: 0.5s;
+  @media ${device.sm} {
+    bottom: 0;
+  }
 `
 
 const Line = styled.span`
@@ -98,6 +137,19 @@ const Line = styled.span`
   background-color: var(--design-line-color);
   justify-self: center;
   grid-area: line;
+  @media ${device.sm} {
+    width: 20.5rem;
+  }
+`
+
+const LogoWrap = styled.div`
+  position: relative;
+  width: 25.5rem;
+  height: 18rem;
+  @media ${device.sm} {
+    width: 10rem;
+    height: 7.0588rem;
+  }
 `
 
 export default function App() {
@@ -106,7 +158,9 @@ export default function App() {
       <main>
         <Section>
           <div>
-            <Image src={BreitlingLogo} alt="Breitling Logo" width="408"/>
+            <LogoWrap>
+              <Image src={BreitlingLogo} alt="Breitling Logo" style={{objectFit:"contain"}} sizes="25.5rem, 18rem" fill priority/>
+            </LogoWrap>
             <WatchTitle>BENTLEY MULSANNE NAVITIMER</WatchTitle>
             <Link href="/contact">
               <OrderBttn>
@@ -116,7 +170,7 @@ export default function App() {
           </div>
           <div>
             <ImageWrap>
-              <Image src={BreitlingWatch} alt="Breitling Mulsanne Navitimer Watch" sizes="31.878rem, 19.043rem" fill/>
+              <Image src={BreitlingWatch} alt="Breitling Mulsanne Navitimer Watch" style={{objectFit:"contain"}} sizes="31.878rem, 19.043rem" fill priority/>
             </ImageWrap>
             <WatchShadow/>
           </div>

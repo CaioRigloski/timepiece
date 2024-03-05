@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components"
 import { ReactNode, useEffect, useState } from "react"
 import { CustomAttrs } from "../types/customAttrs.type"
+import { device } from "../styles/breakpoints"
 
 
 const scrollLeft = (length: number) => keyframes<CustomAttrs>`
@@ -34,21 +35,27 @@ const SliderTrack = styled.div<CustomAttrs>`
   width: calc(27.438rem * ${props => props.$length} * 2);
   height: 13.125rem;
   gap: 5.438rem;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    animation:
-    ${props => props.$selected ?
-      css`${lightenSlider} 3s linear alternate;`
-      :
-      css`none`
+  @media ${device.xl} {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation:
+      ${props => props.$selected ?
+        css`${lightenSlider} 3s linear alternate;`
+        :
+        css`none`
+      }
     }
   }
-`
+
+  @media ${device.sm} {
+    width: calc(100vw * ${props => props.$length});
+  }
+  `
 
 const Gradient = styled.div<CustomAttrs>`
   position: relative;
@@ -61,6 +68,9 @@ const Gradient = styled.div<CustomAttrs>`
     height: 13.125rem;
     background: linear-gradient(90deg, #060d0dd9, #fff0);
     z-index: 999;
+    @media ${device.sm} {
+      display: none;
+    }
   }
   &:before {
     top: 0;
@@ -83,6 +93,22 @@ const Gradient = styled.div<CustomAttrs>`
   & > div:hover {
     animation-play-state: paused;
   }
+  @media ${device.sm} {
+    overflow-x: scroll;
+    & > div {
+      animation: none!important;
+      justify-content: flex-start;
+      padding-left: 3.5rem;
+      padding-right: 1rem;
+      background-color: unset!important;
+    }
+    animation:
+      ${props => props.$selected ?
+        css`${lightenSlider} 3s linear alternate;`
+        :
+        css`none`
+      }
+  }
 `
 
 export default function Slider(props: {children: ReactNode, length: number, id: string, isSelected: boolean}) {
@@ -99,7 +125,7 @@ export default function Slider(props: {children: ReactNode, length: number, id: 
   }, [props.isSelected])
 
   return (
-    <Gradient $length={props.length}>
+    <Gradient $length={props.length} $selected={animationIsRunning}>
       <SliderTrack $length={props.length} id={props.id} $selected={animationIsRunning}>
         {props.children}
       </SliderTrack>

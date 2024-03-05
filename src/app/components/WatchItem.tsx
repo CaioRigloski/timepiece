@@ -4,6 +4,7 @@ import breitlingLogo from "../../../public/svg/BreitlingPartial.svg"
 import patekLogo from "../../../public/svg/PatekPhilippePartial.svg"
 import rolexLogo from "../../../public/svg/RolexPartial.svg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
+import { device } from "../styles/breakpoints"
 
 const Box = styled.div`
   display: grid;
@@ -21,6 +22,11 @@ const Box = styled.div`
     transform: scale(98%);
   }
   transition: 0.5s;
+  @media ${device.sm} {
+    width: 19rem;
+    height: 9.5rem;
+    background-color: var(--design-line-color);
+  }
 `
 
 const Name = styled.div`
@@ -39,6 +45,9 @@ const WatchImage = styled.div`
   height: 12.438rem;
   left: -3.8rem;
   top: 0;
+  @media ${device.sm} {
+    top: unset;
+  }
 `
 
 export default function WatchItem(props: {logo: string, imageSrc: string | StaticImport, name: string, price: number}) {

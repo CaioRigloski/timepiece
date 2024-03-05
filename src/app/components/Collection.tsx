@@ -4,7 +4,7 @@ import patekLogo from "../../../public/svg/patek-philippe120.svg"
 import rolexLogo from "../../../public/svg/rolex120.svg"
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import avenger from "../../../public/images/breitlingAvengerII.png"
 import luminox from "../../../public/images/breitlingLuminox.png"
@@ -26,6 +26,16 @@ const CollectionSection = styled.section`
   height: 100vh;
 `
 
+const LogoWrapper = styled.div`
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  @media ${device.sm} {
+    width: 5rem;
+    height: 5rem;
+  }
+`
+
 const Logos = styled.div`
   display: inline-flex;
   width: 100%;
@@ -33,15 +43,18 @@ const Logos = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5rem;
+  @media ${device.sm} {
+    gap: 2rem;
+  }
 `
 
 const Display = styled.div`
   display: grid;
   padding: 0 1.25rem 0 1.25rem;
   justify-items: center;
-  @media ${device.xl} {
+  @media ${device.sm} {
     position: relative;
-    top: 4rem;
+    padding: 1.25rem 0 1.25rem 0;
   }
 `
   
@@ -51,9 +64,14 @@ const Carousel = styled.div`
   width: 87.5rem;
   overflow-x: clip;
   gap: 4rem;
+  @media ${device.sm} {
+    width: 100vw;
+    gap: 1rem;
+  }
 `
 
 export default function Collection() {
+  const[ windowSize, setWindowSize] = useState<number>(0);
   const [ sliderSelected, setSliderSelected ] = useState<number | undefined>(undefined)
   const [ watchList ] = useState<WatchList>({
     breitling: [
@@ -109,10 +127,18 @@ export default function Collection() {
     ],
   })
 
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleWindowResize)
+  }, [])
+
   // Need two arrays with same items to make the infinite slider work.
-  const breitlingCopy = [...watchList.breitling, ...watchList.breitling]
-  const patekCopy = [...watchList.patek, ...watchList.patek]
-  const rolexCopy = [...watchList.rolex, ...watchList.rolex]
+  const breitlingCopy = windowSize > 1440 ? [...watchList.breitling, ...watchList.breitling] : watchList.breitling
+  const patekCopy = windowSize > 1440 ? [...watchList.patek, ...watchList.patek] : watchList.patek
+  const rolexCopy = windowSize > 1440 ? [...watchList.rolex, ...watchList.rolex]: watchList.rolex
   
   // Animation took 3s to be completed.
   function resetSelected() {
@@ -130,13 +156,19 @@ export default function Collection() {
     <CollectionSection id="collection">
       <Logos>
         <Link href="#breitling-slider" onClick={(e) => setSelected(1)}>
-          <Image src={breitlingLogo} alt="Breitling Logo" width={120}/>
+          <LogoWrapper>
+            <Image src={breitlingLogo} alt="Breitling Logo" sizes="7.5rem, 7.5rem" fill/>
+          </LogoWrapper>
         </Link>
         <Link href="#patek-slider" onClick={(e) => setSelected(2)}>
-          <Image src={patekLogo} alt="Patek Philippe Logo" width={120}/>
+          <LogoWrapper>
+            <Image src={patekLogo} alt="Patek Philippe Logo" sizes="7.5rem, 7.5rem" fill/>
+          </LogoWrapper>
         </Link>
         <Link href="#rolex-slider" onClick={(e) => setSelected(3)}>
-          <Image src={rolexLogo} alt="Rolex Logo" width={120}/>
+          <LogoWrapper>
+            <Image src={rolexLogo} alt="Rolex Logo" sizes="7.5rem, 7.5rem" fill/>
+          </LogoWrapper>
         </Link>
       </Logos>
       <Display>
