@@ -98,7 +98,7 @@ const Gradient = styled.div<CustomAttrs>`
     & > div {
       animation: none!important;
       justify-content: flex-start;
-      padding-left: 3.5rem;
+      padding-left: 4rem;
       padding-right: 1rem;
       background-color: unset!important;
     }

@@ -47,6 +47,7 @@ const WatchImage = styled.div`
   top: 0;
   @media ${device.sm} {
     top: unset;
+    width: 7rem;
   }
 `
 
