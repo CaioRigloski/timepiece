@@ -128,6 +128,8 @@ export default function Collection() {
   })
 
   useEffect(() => {
+    setWindowSize(window.innerWidth)
+
     function handleWindowResize() {
       setWindowSize(window.innerWidth)
     }
