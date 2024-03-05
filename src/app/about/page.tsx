@@ -1,19 +1,34 @@
 'use client'
 
 import Image from "next/image"
-import styled from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 import aboutWatch from "../../../public/svg/aboutWatch.svg"
 import { device } from "../styles/breakpoints"
+
+const AboutStyle = createGlobalStyle`
+  body {
+    //height: 100vh;
+    //max-height: 100vh;
+  }
+`
 
 const Main = styled.main`
   display: grid;
   grid-template-columns: auto max-content auto;
-  padding: 3.625rem 15.125rem 3.625rem 15.125rem;
+  padding: 4.438rem 15.125rem 4.438rem 15.125rem;
   align-items: center;
-  @media ${device.xl} {
-    padding: 4.438rem 15.125rem 4.438rem 15.125rem;
+  @media ${device.sm} {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    grid-template-areas:
+      "info"
+      "image"
+    ;
+    justify-content: center;
+    padding: 0;
   }
 `
+
 const ImageWrap = styled.div`
   display: grid;
   justify-items: center;
@@ -22,11 +37,38 @@ const ImageWrap = styled.div`
   height: 25.813rem;
   justify-self: flex-end;
   right: 4.5rem;
-  > img {
-    position: relative!important;
-    object-fit: contain;
+  > div:first-child {
+    position: relative;
+    width: 25.813rem;
+    height: 25.813rem;
+    @media ${device.sm} {
+      width: 10rem;
+      height: 10rem;
+    }
+    @media ${device.xs} {
+      width: 7rem;
+      height: 7rem;
+    }
   }
-`
+  @media ${device.sm} {
+    align-content: center;
+    grid-area: image;
+    left: 0;
+    width: 10rem;
+    height: 21rem;
+    justify-self: center;
+    gap: 2rem;
+  }
+  @media ${device.xs} {
+    align-content: center;
+    grid-area: image;
+    left: 0;
+    width: 10rem;
+    height: 10rem;
+    justify-self: center;
+    gap: 2rem;
+  }
+  `
 
 const WatchShadow = styled.div`
   width: 15.125rem;
@@ -36,6 +78,12 @@ const WatchShadow = styled.div`
   filter: blur(12px);
   position: relative;
   bottom: 2rem;
+  @media ${device.sm} {
+    width: 5.859rem;
+  }
+  @media ${device.xs} {
+    width: 4rem;
+  }
 `
 
 const Info = styled.div`
@@ -46,12 +94,20 @@ const Info = styled.div`
   position: relative;
   padding-left: 4.5rem;
   top: 1.438rem;
+  @media ${device.sm} {
+    grid-area: info;
+    padding: 0;
+    justify-self: center;
+  }
 `
 
 
 const Title = styled.div`
   color: var(--pallete-gold-color);
   font-size: 1rem;
+  @media ${device.sm} {
+    padding: 0 1rem 0 1rem;
+  }
 `
 
 const Description = styled.div`
@@ -59,6 +115,15 @@ const Description = styled.div`
   height: 20rem;
   font-size: 0.75rem;
   color: white;
+  @media ${device.sm} {
+    font-size: 0.6rem;
+    height: 17rem;
+    padding: 0 1rem 0 1rem;
+  }
+  @media ${device.xs} {
+    height: 18rem;
+    padding: 0 1rem 0 1rem;
+  }
 `
 
 const InfoLine = styled.div`
@@ -68,6 +133,9 @@ const InfoLine = styled.div`
   position: absolute;
   right: 23.875rem;
   top: 0.5rem;
+  @media ${device.sm} {
+    display: none;
+  }
 `
 
 const MainLine = styled.div`
@@ -75,6 +143,9 @@ const MainLine = styled.div`
   height: 37.5rem;
   background-color: var(--design-line-color);
   margin-left: 1.313rem;
+  @media ${device.sm} {
+    display: none;
+  }
 `
 const Footer = styled.div`
   display: flex;
@@ -82,9 +153,6 @@ const Footer = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  @media ${device.xl} {
-    height: 5.688rem;
-  }
 `
 
 const FooterLine = styled.div`
@@ -92,14 +160,21 @@ const FooterLine = styled.div`
   height: 1px;
   background-color: var(--design-line-color);
   align-self: center;
+  @media ${device.sm} {
+    width: 20.5rem;
+    height: 1px;
+  }
 `
 
 export default function About() {
   return (
     <>
+    <AboutStyle/>
     <Main>
       <ImageWrap>
-        <Image src={aboutWatch} fill={true} alt="Watch illustration" priority/>
+        <div>
+          <Image src={aboutWatch} sizes="25.813rem, 25.813rem" fill alt="Watch illustration" priority/>
+        </div>
         <WatchShadow/>
       </ImageWrap>
       <Info>
