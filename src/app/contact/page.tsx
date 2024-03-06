@@ -95,6 +95,9 @@ const Contacts = styled.div`
     text-align: center;
     justify-content: center;
   }
+  @media ${device.xs} {
+    padding-bottom: 5rem;
+  }
 `
 
 const Title = styled.h3`
