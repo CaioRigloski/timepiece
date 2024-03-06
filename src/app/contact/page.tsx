@@ -16,6 +16,7 @@ const Main = styled.main`
 `
 const WeContact = styled.div`
   display: grid;
+  grid-template-rows: max-content max-content;
   gap: 1rem;
   > p {
     font-size: 0.688rem;
@@ -41,6 +42,17 @@ const SendInfo = styled.div`
     color: #BBBCB6;
     padding-left: 0.625rem;
   }
+  @media ${device.sm} {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 2.5rem;
+    justify-items: center;
+    width: 18.5rem;
+    gap: 0.3rem;
+    > input {
+      width: 100%!important;
+    }
+  }
 `
 
 const Line = styled.div`
@@ -48,6 +60,10 @@ const Line = styled.div`
   height: 1px;
   background-color: var(--design-line-color);
   justify-self: center;
+  @media ${device.sm} {
+    margin-top: 1rem;
+    width: 18.5rem;
+  }
 `
 
 const SendBttn = styled.button`
@@ -61,6 +77,10 @@ const SendBttn = styled.button`
     transform: scale(98%);
   }
   transition: 0.5s;
+  @media ${device.sm} {
+    height: 1.5rem;
+    place-self: center;
+  }
 `
 
 
