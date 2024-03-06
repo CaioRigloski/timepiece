@@ -1,8 +1,8 @@
 import Image from "next/image"
 import styled from "styled-components"
-import breitlingLogo from "../../../public/svg/BreitlingPartial.svg"
-import patekLogo from "../../../public/svg/PatekPhilippePartial.svg"
-import rolexLogo from "../../../public/svg/RolexPartial.svg"
+import breitlingLogo from "../../../public/svg/breitlingPartial.svg"
+import patekLogo from "../../../public/svg/patekPhilippePartial.svg"
+import rolexLogo from "../../../public/svg/rolexPartial.svg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
 import { device } from "../styles/breakpoints"
 
