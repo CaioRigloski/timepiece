@@ -5,12 +5,6 @@ import styled, { createGlobalStyle } from "styled-components"
 import aboutWatch from "../../../public/svg/aboutWatch.svg"
 import { device } from "../styles/breakpoints"
 
-const AboutStyle = createGlobalStyle`
-  body {
-    //height: 100vh;
-    //max-height: 100vh;
-  }
-`
 
 const Main = styled.main`
   display: grid;
@@ -169,7 +163,6 @@ const FooterLine = styled.div`
 export default function About() {
   return (
     <>
-    <AboutStyle/>
     <Main>
       <ImageWrap>
         <div>
