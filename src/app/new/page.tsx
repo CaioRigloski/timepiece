@@ -10,12 +10,16 @@ import { device } from "../styles/breakpoints"
 
 const Main = styled.main`
   display: grid;
-  grid-template-columns: max-content auto max-content;
+  grid-template-columns: max-content 5rem max-content;
   padding-top: 3.625rem;
   align-items: center;
   justify-content: center;
   @media ${device.xl} {
     padding-top: 6.625rem;
+  }
+  @media ${device.sm} {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 10rem max-content;
   }
 `
 
@@ -30,6 +34,9 @@ const LeftWatchBox = styled.div`
   ;
   justify-items: center;
   padding: 0 6.625rem 0 6.625rem;
+  @media ${device.sm} {
+    padding: 0;
+  }
 `
 
 const RightWatchBox = styled.div`
@@ -43,6 +50,9 @@ const RightWatchBox = styled.div`
   ;
   justify-items: center;
   padding: 0 6.625rem 0 6.625rem;
+  @media ${device.sm} {
+    padding: 0 0 5rem 0;
+  }
 `
 
 const LogoWrap = styled.div`
@@ -70,9 +80,12 @@ const ImageWrap = styled.div`
   > image {
     object-fit:"contain";
   }
+  @media ${device.sm} {
+    width: 10rem;
+    height: 16.68rem;
+  }
 `
 const DetailsBttn = styled.button`
-  position: relative;
   width: 9.313rem;
   height: 1.793rem;
   background-color: #FAFAFA0d;
@@ -84,7 +97,7 @@ const DetailsBttn = styled.button`
   }
   transition: 0.5s;
   grid-area: details;
-  top: 2.563rem;
+  margin-top: 2.563rem;
 `
 
 const MiddleLine = styled.div`
@@ -92,6 +105,11 @@ const MiddleLine = styled.div`
   width: 1px;
   background-color: var(--design-line-color);
   justify-self: center;
+  @media ${device.sm} {
+    width: 18.5rem;
+    height: 1px;
+    align-self: center;
+  }
 `
 
 export default function NewReleases() {
